@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between">
               <h5 class="card-title">{{post.creator.name}}</h5>
               <div v-if="post.creator.id == account.id">
-                <small class="mx-1 selectable" @click="editPost()">edit</small>
+                <!-- <small class="mx-1 selectable" @click="editPost()">edit</small> -->
                 <small class="mx-1 selectable" @click="deletePost()">delete</small>
               </div>
             </div>
