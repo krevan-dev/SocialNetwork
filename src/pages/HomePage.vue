@@ -31,7 +31,6 @@ export default {
     return {
       posts: computed(() => AppState.posts),
       account: computed(() => AppState.account),
-      activeProfile: computed(() => AppState.profile)
     }
   }
 }

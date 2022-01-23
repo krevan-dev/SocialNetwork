@@ -11,12 +11,15 @@
               <h5 class="card-title">{{post.creator.name}}</h5>
               <div v-if="post.creator.id == account.id">
                 <!-- <small class="mx-1 selectable" @click="editPost()">edit</small> -->
+                <i class="mdi mdi-trash"></i>
                 <small class="mx-1 selectable" @click="deletePost()">delete</small>
               </div>
             </div>
             <p class="card-text">{{post.body}}</p>
             <img :src="post.imgUrl" class="img-fluid">
-            <p class="card-text pt-2"><small class="text-muted">{{post.createdAt}}</small></p>
+            <div class="d-flex justify-content-end">
+              <p class="card-text pt-4 text-muted"><small>Post updated: {{post.updatedAt}}</small></p>
+            </div>
           </div>
         </div>
       </div>
@@ -64,6 +67,9 @@ export default {
             Pop.toast(error.message, "error")
             logger.log(error)
           }
+        },
+        get Time() {
+          return moment(this.createdAt).startOf('hour').fromNow()
         },
       router
     }
