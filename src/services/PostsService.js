@@ -19,6 +19,13 @@ class PostsService {
   //   logger.log(res.data)
   // }
 
+  async likePost(post) {
+    const res = await api.post('api/posts/' + post.id + '/like')
+    logger.log(res.data)
+    AppState.likes = res.data.likes
+    Pop.toast('Post Liked!')
+  }
+
   async deletePost(postToDelete) {
     const remove = await Pop.confirm('Are you sure you want to delete your post?')
     if (!remove) {

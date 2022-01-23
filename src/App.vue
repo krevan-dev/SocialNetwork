@@ -8,11 +8,11 @@
         <div class="col-2">
           <SideNav/>
         </div>
-        <div class="col-8">
+        <div class="col-7">
           <router-view />
         </div>
-        <div class="col-2">
-          <!-- ads here -->
+        <div class="col-3">
+          <!-- <Ads /> -->
         </div>
       </div>
     </div>
@@ -27,11 +27,21 @@
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
+import Pop from './utils/Pop'
+import { logger } from './utils/Logger'
+import { adsService } from './services/AdsService'
 export default {
   name: 'App',
   setup() {
+    // try {
+    //   await adsService.getAds()
+    // } catch (error) {
+    //   Pop.toast (error.message, "error")
+    //   logger.log(error)
+    // }
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+      ad: computed(() => AppState)
     }
   }
 }

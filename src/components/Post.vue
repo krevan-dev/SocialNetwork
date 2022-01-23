@@ -2,22 +2,27 @@
   <div class="row">
     <div class="card my-2" style="min-width: 540px;">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <img :src="post.creator.picture" class="ms-2 mt-3 creatorImg rounded-circle selectable" @click="goToProfile()" alt="...">
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
           <div class="card-body">
             <div class="d-flex justify-content-between">
               <h5 class="card-title">{{post.creator.name}}</h5>
               <div v-if="post.creator.id == account.id">
-                <!-- <small class="mx-1 selectable" @click="editPost()">edit</small> -->
-                <small class="mx-1 selectable" @click="deletePost()">delete</small>
+                <small class="mx-1 selectable" ><i class="mdi mdi-pencil"></i></small>
+                <small class="mx-1 selectable" @click="deletePost()"><i class="text-danger mdi mdi-trash-can-outline"></i></small>
               </div>
             </div>
             <p class="card-text">{{post.body}}</p>
             <img :src="post.imgUrl" class="img-fluid">
-            <div class="d-flex justify-content-end">
-              <p class="card-text pt-4 text-muted"><small>Post updated: {{post.updatedAt}}</small></p>
+            <div class="d-flex justify-content-between align-items-end">
+              <div v-if="account.id">
+                <i class="selectable mdi mdi-thumb-up-outline" @click="likePost(post.id)"></i><span> - {{post.likes.length}}</span>
+              </div>
+              <div>
+                <p class="card-text pt-4 text-muted"><small>Post updated: {{post.updatedAt}}</small></p>
+              </div>
             </div>
           </div>
         </div>
@@ -45,6 +50,7 @@ export default {
     const router = useRouter();
     return {
       account: computed(() => AppState.account),
+      likes: computed(() => AppState.likes),
         goToProfile(){ 
           router.push({
             name: "Profile",
@@ -54,6 +60,14 @@ export default {
         async editPost(){
           try {
             await postsService.editPost({id: props.post.id})
+          } catch (error) {
+            Pop.toast(error.message, "error")
+            logger.log(error)
+          }
+        },
+        async likePost() {
+          try {
+            await postsService.likePost({id: props.post.id})
           } catch (error) {
             Pop.toast(error.message, "error")
             logger.log(error)

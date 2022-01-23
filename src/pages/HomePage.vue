@@ -9,7 +9,7 @@
 import { computed, onMounted } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
-import {postsService} from '../services/PostsService'
+import { postsService } from '../services/PostsService'
 import { AppState } from '../AppState'
 export default {
   name: 'Home',
