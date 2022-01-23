@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-3"></div>
       <div class="col-7">
-    <Post v-for="p in posts" :key="p.id" :post="p"/>
+        <NewPost v-if="account.id"/>
+        <Post v-for="p in posts" :key="p.id" :post="p"/>
       </div>
       <div class="col-2"></div>
     </div>
@@ -28,7 +29,9 @@ export default {
       }
     })
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account),
+      activeProfile: computed(() => AppState.profile)
     }
   }
 }
