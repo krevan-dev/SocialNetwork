@@ -1,14 +1,8 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-7">
-        <NewPost v-if="account.id"/>
-        <Post v-for="p in posts" :key="p.id" :post="p"/>
-      </div>
-      <div class="col-2"></div>
+    <div class="mx-2">
+      <NewPost v-if="account.id"/>
+      <Post v-for="p in posts" :key="p.id" :post="p"/>
     </div>
-  </div>
 </template>
 
 <script>

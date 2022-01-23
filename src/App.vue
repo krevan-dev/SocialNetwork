@@ -3,7 +3,19 @@
     <Navbar />
   </header>
   <main>
-    <router-view />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <SideNav/>
+        </div>
+        <div class="col-8">
+          <router-view />
+        </div>
+        <div class="col-2">
+          <!-- ads here -->
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     <div class="bg-dark text-light text-center p-4">
@@ -26,5 +38,7 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
+.sidebar {
+  height: 95vh;
+}
 </style>
