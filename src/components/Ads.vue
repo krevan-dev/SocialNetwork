@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <img :src="ad.tall"> -->
+    <img :src="ad.tall">
   </div>
 </template>
 

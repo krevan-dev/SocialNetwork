@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-between">
               <h5 class="card-title">{{post.creator.name}}</h5>
               <div v-if="post.creator.id == account.id">
-                <small class="mx-1 selectable" ><i class="mdi mdi-pencil"></i></small>
+                <!-- <small class="mx-1 selectable" ><i class="mdi mdi-pencil"></i></small> -->
                 <small class="mx-1 selectable" @click="deletePost()"><i class="text-danger mdi mdi-trash-can-outline"></i></small>
               </div>
             </div>
@@ -21,7 +21,7 @@
                 <i class="selectable mdi mdi-thumb-up-outline" @click="likePost(post.id)"></i><span> - {{post.likes.length}}</span>
               </div>
               <div>
-                <p class="card-text pt-4 text-muted"><small>Post updated: {{post.updatedAt}}</small></p>
+                <p class="card-text pt-4 text-muted"><small>Post updated: {{new Date(post.updatedAt).toLocaleString()}}</small></p>
               </div>
             </div>
           </div>

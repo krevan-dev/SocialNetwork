@@ -12,7 +12,7 @@
           <router-view />
         </div>
         <div class="col-3">
-          <!-- <Ads /> -->
+          <Ads v-for="a in ads" :key="a.id" :ad="a"/>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
 import Pop from './utils/Pop'
 import { logger } from './utils/Logger'
@@ -33,15 +33,17 @@ import { adsService } from './services/AdsService'
 export default {
   name: 'App',
   setup() {
-    // try {
-    //   await adsService.getAds()
-    // } catch (error) {
-    //   Pop.toast (error.message, "error")
-    //   logger.log(error)
-    // }
+    onMounted(async () =>{
+      try {
+        await adsService.getAds()
+      } catch (error) {
+        Pop.toast (error.message, "error")
+        logger.log(error)
+      }
+    })
     return {
       appState: computed(() => AppState),
-      ad: computed(() => AppState)
+      ads: computed(() => AppState.ads)
     }
   }
 }

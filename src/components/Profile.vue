@@ -10,7 +10,7 @@
           <div>
             <h4 class="card-title">{{profile.name}}</h4>
             <h6 class="card-title">{{profile.email}}</h6>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur harum nesciunt enim deleniti. Quam delectus cum voluptas veniam a, praesentium laudantium? Dignissimos architecto vero omnis ducimus magni eos! Exercitationem, ratione!</p>
+            <p class="card-text">{{profile.bio}}</p>
           </div>
           <div>
             <button class="btn btn-outline-warning rounded-pill">

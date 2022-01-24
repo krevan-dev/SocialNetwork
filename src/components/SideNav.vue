@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar d-md-flex flex-column justify-content-between bg-dark d-none d-md-block">
-    <div class="top-part ms-3 mt-3">
+    <div class="top-part ms-3 mt-3" v-if="account.id">
       <img :src="account.picture" class="rounded-circle mb-3">
       <h5>{{account.name}}</h5>
       <h5>{{account.email}}</h5>
