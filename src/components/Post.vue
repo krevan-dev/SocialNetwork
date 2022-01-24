@@ -3,7 +3,7 @@
     <div class="card my-2" style="min-width: 540px;">
       <div class="row">
         <div class="col-md-2">
-          <img :src="post.creator.picture" class="ms-2 mt-3 creatorImg rounded-circle selectable" @click="goToProfile()" alt="...">
+          <img :src="post.creator.picture" class="ms-2 mt-3 creatorImg img-fluid rounded-circle selectable" @click="goToProfile()" alt="...">
         </div>
         <div class="col-md-10">
           <div class="card-body">

@@ -7,6 +7,18 @@ class PostsService {
   async getPosts(query = '') {
     const res = await api.get('api/posts' + query)
     AppState.posts = res.data.posts
+    AppState.totalPages = res.data.totalPages
+  }
+
+  async searchPosts(query) {
+    const res = await api.get(`api/posts/?query=${query}`)
+    logger.log(res.data)
+    AppState.posts = res.data.posts
+  }
+
+  async getPage(page) {
+    const res = await api.get(`api/posts/?page=${page}`)
+    AppState.posts = res.data.posts
   }
 
   async createPost(newPost) {
